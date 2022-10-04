@@ -34,7 +34,6 @@
                 </div>
               </div>
             </div>
-
             <div class="container">
               <div id="results"></div>
             </div>
@@ -41361,6 +41360,18 @@
       const results = document.querySelector("#results");
 
       const items = filtered.filter(i => i.name.toUpperCase().includes(name.toUpperCase()));
+
+      if (items.length == 0) {
+        results.innerHTML = `
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+              </button>
+              <strong>Nenhum Registro Encontrado!</strong>
+            </div>
+        `;
+      }
 
       items.forEach(i => {
         results.innerHTML += `
